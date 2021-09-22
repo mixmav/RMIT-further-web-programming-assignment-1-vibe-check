@@ -2,13 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './scss/index.scss';
-import App from './router/app/App';
+import App from './App/App';
 
 import reportWebVitals from './reportWebVitals';
+import { UserDatastoreProvider } from 'Context/UserDatastoreContext';
+import { UserProvider } from 'Context/UserContext';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<UserDatastoreProvider>
+			<UserProvider>
+				<App />
+			</UserProvider>
+		</UserDatastoreProvider>
 	</React.StrictMode>,
 	
 	document.getElementById('root')
