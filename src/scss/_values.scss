@@ -48,11 +48,14 @@ i, span{
 	color: inherit;
 }
 
-.text-color{
+.text{
 	@each $color, $hex in $colors {
 		&.#{$color} {
 			color: $hex;
 		}
+	}
+	&.bold{
+		font-weight: bold;
 	}
 }
 

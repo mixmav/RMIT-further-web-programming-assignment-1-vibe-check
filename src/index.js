@@ -6,14 +6,14 @@ import App from './App/App';
 
 import reportWebVitals from './reportWebVitals';
 import { UserDatastoreProvider } from 'Context/UserDatastoreContext';
-import { UserProvider } from 'Context/UserContext';
+import { AuthProvider } from 'Context/AuthContext';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<UserDatastoreProvider>
-			<UserProvider>
+			<AuthProvider>
 				<App />
-			</UserProvider>
+			</AuthProvider>
 		</UserDatastoreProvider>
 	</React.StrictMode>,
 	

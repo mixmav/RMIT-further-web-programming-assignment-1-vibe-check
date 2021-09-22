@@ -17,7 +17,12 @@ export function useUserDatastorePush(){
 }
 
 export function UserDatastoreProvider({ children }){
-	const [userDatastore, setUserDatastore] = useState([]);
+	const [userDatastore, setUserDatastore] = useState([{
+		email: 'manav.sg1@gmail.com',
+		name: 'Manav Gadhoke',
+		password: '123',
+		createdAt: new Date().toDateString(),
+	}]);
 
 	const updateUserDatastore = (newUserDatastore) => {
 		setUserDatastore(newUserDatastore);

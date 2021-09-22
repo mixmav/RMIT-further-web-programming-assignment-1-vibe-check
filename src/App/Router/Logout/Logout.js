@@ -1,13 +1,13 @@
-import { useUserUpdate } from 'Context/UserContext';
+import { useAuthUpdate } from 'Context/AuthContext';
 import { Redirect } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function Logout(){
-	const updateUser = useUserUpdate();
+	const updateAuth = useAuthUpdate();
 	
 	useEffect(() => {
-		updateUser({authenticated: false});
-	}, []); // Only run once.
+		updateAuth({auth: false});
+	}, [updateAuth]); // Only run once.
 
 	return(
 		<div>
