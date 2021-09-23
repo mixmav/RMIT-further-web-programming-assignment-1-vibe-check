@@ -5,16 +5,19 @@ import './scss/index.scss';
 import App from './App/App';
 
 import reportWebVitals from './reportWebVitals';
+import { PostDatastoreProvider } from 'Context/PostDatastoreContext';
 import { UserDatastoreProvider } from 'Context/UserDatastoreContext';
 import { AuthProvider } from 'Context/AuthContext';
 
 ReactDOM.render(
 	<React.StrictMode>
-		<UserDatastoreProvider>
-			<AuthProvider>
-				<App />
-			</AuthProvider>
-		</UserDatastoreProvider>
+		<PostDatastoreProvider>
+			<UserDatastoreProvider>
+				<AuthProvider>
+					<App />
+				</AuthProvider>
+			</UserDatastoreProvider>
+		</PostDatastoreProvider>
 	</React.StrictMode>,
 	
 	document.getElementById('root')

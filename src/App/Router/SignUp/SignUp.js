@@ -64,7 +64,7 @@ function SignUp() {
 			}
 			<span>
 				<h1>Sign up</h1>
-				<form onSubmit={validateForm}>
+				<form onSubmit={validateForm} className="mt-10">
 					<input onChange={e => setUserName(e.target.value)} className="text-input full-width" type="text" name="name" placeholder="Name" autoFocus />
 					<input onChange={e => setUserEmail(e.target.value)} className="text-input full-width mt-10" type="email" name="email" placeholder="Email" />
 					<input onChange={e => setUserPassword(e.target.value)} className="text-input full-width mt-10" type="password" name="password" placeholder="Password"/>

@@ -1,0 +1,55 @@
+import { useState, useEffect } from 'react';
+import { useAuth } from 'Context/AuthContext';
+import { useUserDatastore } from 'Context/UserDatastoreContext';
+import { usePostDatastorePull } from 'Context/PostDatastoreContext';
+
+import Avatar from 'App/Common/Avatar/Avatar';
+
+
+function IndividualPost(props){
+	const auth = useAuth();
+	const userDatastore = useUserDatastore();
+	const pullFromPostDatastore = usePostDatastorePull();
+
+	let postUser = userDatastore.find(object => object.email === props.post.user_id);
+	const [userName, setUserName] = useState("");
+	const [userEmail, setUserEmail] = useState("");
+
+	useEffect(() => {
+		if((postUser !== undefined)){			
+			setUserName(postUser.name);
+			setUserEmail(postUser.email);
+		}
+	}, [postUser]);
+
+	const handleDelete = () => {
+		if (window.confirm("Are you sure you want to delete this post?")) {
+			pullFromPostDatastore(props.post.post_id);
+			alert("Post deleted");
+		}
+	}
+
+	return(
+		<div className="router-page-posts--component-individual-post">
+			<div className="top-bar">
+				<Avatar seed={userEmail} size="small"/>
+				<p>Written by {userName}</p>
+			</div>
+			<div className="content">
+				<h1>{props.post.content}</h1>
+			</div>
+			<div className="buttons mt-50">
+				<button className="btn"><i className="fa fa-reply"></i>Reply</button>
+				{auth.email === props.post.user_id &&
+					<div>
+						<button className="btn"><i className="fa fa-edit"></i>Edit</button>
+						&nbsp;&nbsp;
+						<button className="btn red" onClick={handleDelete}><i className="fa fa-trash-alt"></i>Delete</button>
+					</div>
+				}
+			</div>
+		</div>
+	);
+}
+
+export default IndividualPost;

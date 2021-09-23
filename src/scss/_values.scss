@@ -60,15 +60,12 @@ i, span{
 }
 
 .text-input{
-	border: none {
-		bottom: solid 2px rgba(black, 0.6);
-	}
+	border: solid 1px rgba(black, 0.6);
 	background: transparent;
 	display: inline-block;
 	transition: all .2s;
-	padding: 1em{
+	padding: .8em{
 		left: .5em;
-		bottom: .5em;
 	}
 	&:focus{
 		outline: 0;

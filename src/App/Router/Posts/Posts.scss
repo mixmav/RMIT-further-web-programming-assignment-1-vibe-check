@@ -3,35 +3,92 @@
 .router-page-posts-container{
 	display: flex;
 	justify-content: center;
-	section.new-post{
+	section{
 		width: 100%;
-		max-width: 500px;
-		.user-details{
-			margin-top: 20px;
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			background: lighten($primary-color, 30%);
-			padding: .5em{
-				left: 1.4em;
-				right: 1.4em;
+		max-width: 600px;
+		.router-page-posts--component-new-post{
+			.user-details{
+				margin-top: 20px;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				background: lighten($primary-color, 40%);
+				padding: .5em{
+					left: 1.4em;
+					right: 1.4em;
+				}
+				border-radius: 30px;
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
+				border: solid 1px rgba(black, 0.4);
+				img{
+					border: none;
+				}
+				p{
+					margin-left: 10px;
+				}
 			}
-			border-radius: 30px;
-			img{
-				border: none;
-			}
-			p{
-				margin-left: 10px;
+
+			.form{
+				textarea{
+					border: solid 1px rgba(black, 0.4){
+						top: none;
+					};
+					width: 100%;
+					padding: 10px;
+					height: 100px;
+					max-height: 300px;
+					min-height: 100px;
+					resize: vertical;
+					background: darken(white, 7%);
+					transition: background .2s;
+					&:focus{
+						outline: 0;
+						background: white;
+					}
+				}
 			}
 		}
+		.router-page-posts--component-individual-post{
+			width: 100%;
+			border: solid 1px rgba(black, 0.4);
+			border-top-right-radius: 10px;
+			border-top-left-radius: 10px;
+			background: white;
+			margin-top: 30px;
+			&:first-child{
+				margin-top: 20px;
+			}
 
-		.form{
-			margin-top: 20px;
-			textarea{
+			.top-bar{
+				border-bottom: solid 1px rgba(black, 0.4);
+				border-radius: 10px;
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: 0;
 				width: 100%;
-				padding: 10px;
-				height: 100px;
-				resize: vertical;
+				padding: .5em{
+					left: 1.4em;
+					right: 1.4em;
+				}
+				background: lighten($primary-color, 40%);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				img{
+					border: none;
+				}
+			}
+
+			div.content{
+				padding: 1em;
+			}
+
+			.buttons{
+				display: flex;
+				padding: 1em;
+				justify-content: space-between;
+				align-items: center;
+				border-top: solid 1px rgba(black, 0.4);
 			}
 		}
 	}

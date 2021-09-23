@@ -44,7 +44,7 @@ function SignIn() {
 			}
 			<span>
 				<h1>Sign in</h1>
-				<form onSubmit={attemptLogin}>
+				<form onSubmit={attemptLogin} className="mt-10">
 					<input onChange={e => setUserEmail(e.target.value)} className="text-input full-width" type="email" name="email" placeholder="Email" required autoFocus />
 					<input onChange={e => setUserPassword(e.target.value)} className="text-input full-width mt-10" type="password" name="password" placeholder="Password" required />
 					<button className="btn full-width mt-20"><i className="fa fa-sign-in-alt"></i>Sign in</button>

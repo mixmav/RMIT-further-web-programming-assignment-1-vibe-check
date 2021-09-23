@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useAuth, useAuthUpdate } from 'Context/AuthContext';
 import { useUserDatastore, useUserDatastorePull } from 'Context/UserDatastoreContext';
+import { usePostDatastorePull } from 'Context/PostDatastoreContext';
 
 import "./Profile.scss";
 
@@ -14,6 +15,7 @@ function Profile() {
 
 	const userDatastore = useUserDatastore();
 	const pullFromUserDatastore = useUserDatastorePull();
+	const pullFromPostDatastore = usePostDatastorePull();
 
 	let user = userDatastore.find(object => object.email === auth.email);
 	
@@ -33,8 +35,9 @@ function Profile() {
 
 	const handleDeleteProfile = () => {
 		if(window.confirm("Are you sure you want to delete your profile? This will also delete all your posts.")){
-			updateAuth({auth: false, email: null}); //Log user out.
 			pullFromUserDatastore(user.email);
+			pullFromPostDatastore(user.email, true);
+			updateAuth({auth: false, email: null}); //Log user out.
 		}
 	}
 

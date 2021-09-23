@@ -20,6 +20,7 @@
 		justify-content: space-between;
 		align-items: center;
 		background: white;
+		z-index: $zIndex-top-bar;
 		border-bottom: solid 1px rgba(black, 0.4);
 		.heading{
 			text-decoration: none;
@@ -49,6 +50,7 @@
 	.router-container{
 		margin-top: 80px;
 		padding: 1em;
+		margin-bottom: 30px;
 	}
 
 	.footer{
