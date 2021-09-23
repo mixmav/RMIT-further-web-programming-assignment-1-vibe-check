@@ -126,6 +126,14 @@ i, span{
 		text-align: center;
 	}
 
+	&.small{
+		font-size: .7em;
+		padding: .8em {
+			left: 1.2em;
+			right: 1.2em;
+		}
+	}
+
 	&.jumbo{
 		padding: 1.4em {
 			left: 1.4em;
@@ -159,29 +167,36 @@ i, span{
 }
 
 .icon-btn{
-	padding: 1em {
-		left: 1.1em;
-		right: 1.1em
+    @extend .no-select;
+
+	padding: .8em {
+		left: 1em;
+		right: 1em
 	}
 	font-size: 1em;
-	border-radius: 100%;
+	border-radius: 10px;
 	position: relative;
 	display: inline-block;
 	transition: all .15s;
-	background: transparent;
+	background: $primary-color;
 	border: none;
 	cursor: pointer;
-
 	color: white;
 	position: relative;
-    @extend .no-select;
-	&:focus, &:hover{
-		outline: 0;
-		background: rgba(white, 0.1);
+
+	&:focus{
+		box-shadow: 0 0 0 3px rgba($primary-color, 0.4);
 	}
-	&:active{
-		background: rgba(white, 0.4);
+
+	@each $color, $hex in $colors {
+		&.#{$color} {
+			background: $hex;
+			&:focus{
+				box-shadow: 0 0 0 3px rgba($hex, 0.4);
+			}
+		}
 	}
+
 	i{
 		font-size: inherit;
 		color: inherit;

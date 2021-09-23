@@ -48,6 +48,30 @@
 					}
 				}
 			}
+			.router-page-posts--component-choose-picture-dialog{
+				position: fixed;
+				top: 0;
+				left: 0;
+				background: rgba(black, 0.6);
+				width: 100%;
+				height: 100%;
+				z-index: $zIndex-dialog;
+
+				.dialog{
+					width: 100%;
+					height: 100%;
+					max-width: 400px;
+					max-height: 500px;
+					background: white;
+					position: fixed;
+					top: 100px;
+					left: 50%;
+					border-radius: 10px;
+					padding: 1em;
+					transform: translateX(-50%);
+					overflow: auto;
+				}
+			}
 		}
 		.router-page-posts--component-individual-post{
 			width: 100%;
@@ -81,6 +105,8 @@
 
 			div.content{
 				padding: 1em;
+				overflow-wrap: break-word;
+				word-wrap: break-word;
 			}
 
 			.buttons{

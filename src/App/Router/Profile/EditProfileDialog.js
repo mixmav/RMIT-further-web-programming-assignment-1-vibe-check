@@ -104,7 +104,7 @@ function EditProfileDialog(props){
 						<label>Name</label>
 						<input type="text" className="text-input" value={userName} onChange={e => setUserName(e.target.value)} onKeyDown={(e) => {if(e.keyCode === 13) updateName()}}/>
 					</div>
-					<button className="btn mt-20" onClick={updateName}><i className="fa fa-sync-alt"></i>Update name</button>
+					<button className="btn darkBlack mt-20" onClick={updateName}><i className="fa fa-sync-alt"></i>Update name</button>
 					<h2 className="mt-30"><i className="fa fa-key"></i>Change password</h2>
 					<div className="input-field mt-10">
 						<input type="password" className="text-input" onChange={e => setOldPassword(e.target.value)} placeholder="Old password" ref={oldPasswordRef}/>
@@ -113,8 +113,8 @@ function EditProfileDialog(props){
 					<div className="input-field mt-10">
 						<input type="password" className="text-input" onChange={e => setNewPassword(e.target.value)} placeholder="New password" ref={newPasswordRef}/>
 					</div>
-					<button className="btn mt-20" onClick={updatePassword}><i className="fa fa-sync-alt"></i>Update password</button>
-					<button className="btn blue full-width mt-30" onClick={handleClick}><i className="fa fa-window-close"></i>Close</button>
+					<button className="btn darkBlack mt-20" onClick={updatePassword}><i className="fa fa-sync-alt"></i>Update password</button>
+					<button className="btn full-width mt-30" onClick={handleClick}><i className="fa fa-window-close"></i>Close</button>
 				</section>
 			</div>
 		</div>

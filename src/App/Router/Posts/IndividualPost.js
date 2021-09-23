@@ -25,7 +25,6 @@ function IndividualPost(props){
 	const handleDelete = () => {
 		if (window.confirm("Are you sure you want to delete this post?")) {
 			pullFromPostDatastore(props.post.post_id);
-			alert("Post deleted");
 		}
 	}
 
