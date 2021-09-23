@@ -50,24 +50,24 @@ function EditProfileDialog(props){
 	}
 
 	const updatePassword = (event) => {
-		// if (oldPassword.trim() === "") {
-		// 	alert("Old password can't be empty.");
-		// 	return;
-		// }
-		// if (newPassword.trim() === "") {
-		// 	alert("New password can't be empty.");
-		// 	return;
-		// }
+		if (oldPassword.trim() === "") {
+			alert("Old password can't be empty.");
+			return;
+		}
+		if (newPassword.trim() === "") {
+			alert("New password can't be empty.");
+			return;
+		}
 
 		if (oldPassword === user.password) {
 			// valdiate new password for security.
 			if(
-				false
-				// newPassword.length < 6 || // Is at least 6 characters long
-				// !newPassword.match(/[a-z]/) || // Contains at least 1 lowercase letter
-				// !newPassword.match(/[A-Z]/) || // Contains at least 1 uppercase letter
-				// !newPassword.match(/[0-9]/) || // Contains at least one number
-				// !newPassword.match(/[\W_]/) // Contains at least one special character including an underscore
+				// false
+				newPassword.length < 6 || // Is at least 6 characters long
+				!newPassword.match(/[a-z]/) || // Contains at least 1 lowercase letter
+				!newPassword.match(/[A-Z]/) || // Contains at least 1 uppercase letter
+				!newPassword.match(/[0-9]/) || // Contains at least one number
+				!newPassword.match(/[\W_]/) // Contains at least one special character including an underscore
 			){
 				alert('Password needs to be at least 6 characters including uppercase, lowercase characters, and a number and a punctuation.');
 				return;

@@ -5,6 +5,7 @@ import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 import Logout from './Logout/Logout';
 import Profile from './Profile/Profile';
+import Posts from './Posts/Posts';
 
 function RouterSwitch(){
 	return (
@@ -20,6 +21,9 @@ function RouterSwitch(){
 			</Route>
 			<Route path="/profile">
 				<Profile />
+			</Route>
+			<Route path="/posts">
+				<Posts />
 			</Route>
 			<Route path="/">
 				<Home />

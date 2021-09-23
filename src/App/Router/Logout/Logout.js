@@ -6,7 +6,7 @@ function Logout(){
 	const updateAuth = useAuthUpdate();
 	
 	useEffect(() => {
-		updateAuth({auth: false});
+		updateAuth({auth: false, email: null});
 	}, [updateAuth]); // Only run once.
 
 	return(

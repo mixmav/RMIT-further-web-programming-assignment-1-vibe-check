@@ -4,6 +4,7 @@ import _ from 'lodash';
 const UserDatastoreContext = React.createContext();
 const UserDatastoreUpdateContext = React.createContext();
 const UserDatastorePushContext = React.createContext();
+const UserDatastorePullContext = React.createContext();
 const UserDatastoreUpdateUserContext = React.createContext();
 
 export function useUserDatastore(){
@@ -16,6 +17,10 @@ export function useUserDatastoreUpdate(){
 
 export function useUserDatastorePush(){
 	return useContext(UserDatastorePushContext);
+}
+
+export function useUserDatastorePull(){
+	return useContext(UserDatastorePullContext);
 }
 
 export function useUserDatastoreUpdateUser(){
@@ -72,6 +77,10 @@ export function UserDatastoreProvider({ children }){
 		);
 	}
 
+	const pullUserDatastore = (email) => {
+		setEmailToPull(email);
+	}
+
 	const updateUserInDatastore = (user) => {
 		setUserDatastore(
 			() => {
@@ -85,9 +94,11 @@ export function UserDatastoreProvider({ children }){
 		<UserDatastoreContext.Provider value={userDatastore}>
 			<UserDatastoreUpdateContext.Provider value={updateUserDatastore}>
 				<UserDatastorePushContext.Provider value={pushUserDatastore}>
-					<UserDatastoreUpdateUserContext.Provider value={updateUserInDatastore}>
-						{children}
-					</UserDatastoreUpdateUserContext.Provider>
+					<UserDatastorePullContext.Provider value={pullUserDatastore}>
+						<UserDatastoreUpdateUserContext.Provider value={updateUserInDatastore}>
+							{children}
+						</UserDatastoreUpdateUserContext.Provider>
+					</UserDatastorePullContext.Provider>
 				</UserDatastorePushContext.Provider>
 			</UserDatastoreUpdateContext.Provider>
 		</UserDatastoreContext.Provider>

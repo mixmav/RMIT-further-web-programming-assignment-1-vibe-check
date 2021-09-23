@@ -10,6 +10,7 @@ function TopBar(){
 
 			{auth.auth && //Render only if the user is Authenticated
 				<nav>
+					<Link to="/posts">Posts</Link>
 					<Link to="/profile">My profile</Link>
 					<Link to="/logout">Logout</Link>
 				</nav>

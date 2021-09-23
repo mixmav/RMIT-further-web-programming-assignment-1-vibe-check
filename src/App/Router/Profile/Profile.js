@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useAuth } from 'Context/AuthContext';
-import { useUserDatastore } from 'Context/UserDatastoreContext';
+import { useAuth, useAuthUpdate } from 'Context/AuthContext';
+import { useUserDatastore, useUserDatastorePull } from 'Context/UserDatastoreContext';
 
 import "./Profile.scss";
 
 import EditProfileDialog from './EditProfileDialog';
+import Avatar from 'App/Common/Avatar/Avatar';
 
 function Profile() {
 	const auth = useAuth();
+	const updateAuth = useAuthUpdate();
 
 	const userDatastore = useUserDatastore();
+	const pullFromUserDatastore = useUserDatastorePull();
 
 	let user = userDatastore.find(object => object.email === auth.email);
 	
@@ -28,10 +31,18 @@ function Profile() {
 		}
 	}, [user]);
 
+	const handleDeleteProfile = () => {
+		if(window.confirm("Are you sure you want to delete your profile? This will also delete all your posts.")){
+			updateAuth({auth: false, email: null}); //Log user out.
+			pullFromUserDatastore(user.email);
+		}
+	}
+
 	return (
 		<div className="router-page-profile-container">
 			
-			{editProfileDialogVisible &&
+			{
+				editProfileDialogVisible &&
 				<EditProfileDialog visible={editProfileDialogVisible} toggleVisible={(state) => setEditProfileDialogVisible(state)}/>
 			}
 			{
@@ -40,28 +51,18 @@ function Profile() {
 			}
 			<h1>Your profile</h1>
 			<div className="profile-details">
-				<img src={"https://avatars.dicebear.com/api/bottts/" + hashString(userEmail) + '.svg'} alt="User avatar"/>
-				<div>
+				<Avatar seed={userEmail}/>
+				<section className="mt-10">
 					<p className="text primary bold">{userName}</p>
 					<p className="text primary bold">{userEmail}</p>
 					<p>Joined: <span className="text primary bold">{userCreatedAt}</span></p>
-				</div>
-				<button className="btn mt-10" onClick={() => setEditProfileDialogVisible(true)}><i className="fa fa-edit"></i>Edit profile</button>
+				</section>
+				<button className="btn mt-20" onClick={() => setEditProfileDialogVisible(true)}><i className="fa fa-edit"></i>Edit profile</button>
 				&nbsp;&nbsp;
-				<button className="btn red mt-10"><i className="fa fa-trash-alt"></i>Delete profile</button>
+				<button className="btn red mt-20" onClick={handleDeleteProfile}><i className="fa fa-trash-alt"></i>Delete profile</button>
 			</div>
 		</div>
 	);
 }
 
 export default Profile;
-
-const hashString = str => {
-	let hash = 0;
-	for (let i = 0; i < str.length; i++) {
-		const char = str.charCodeAt(i);
-		hash = (hash << 5) - hash + char;
-		hash &= hash;
-	}
-	return new Uint32Array([hash])[0].toString(36);
-};
