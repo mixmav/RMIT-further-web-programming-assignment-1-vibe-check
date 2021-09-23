@@ -59,9 +59,7 @@
 
 				.dialog{
 					width: 100%;
-					height: 100%;
 					max-width: 400px;
-					max-height: 500px;
 					background: white;
 					position: fixed;
 					top: 100px;
@@ -70,6 +68,15 @@
 					padding: 1em;
 					transform: translateX(-50%);
 					overflow: auto;
+					.top-bar{
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+					}
+					img{
+						width: 100%;
+						margin-top: 10px;
+					}
 				}
 			}
 		}
