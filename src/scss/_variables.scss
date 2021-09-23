@@ -4,11 +4,11 @@ $primary-alt-color: white;
 
 
 $black: rgba(black, 0.8);
-$red: #EF798A;
+$red: #CC0041;
 $orange: #FC8C24;
 $yellow: #FDE747;
 $green: #61E294;
-$blue: #0BC9CD;
+$blue: #3185FC;
 $indigo: #8A4FFF;
 $teal: teal;
 $pink: #EC407A;
@@ -41,3 +41,5 @@ $colors: (
 		@content;
 	}
 }
+
+$zIndex-edit-profile-dialog: 1000;

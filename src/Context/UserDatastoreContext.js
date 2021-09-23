@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import update from 'immutability-helper';
 
 const UserDatastoreContext = React.createContext();
 const UserDatastoreUpdateContext = React.createContext();
@@ -17,19 +18,25 @@ export function useUserDatastorePush(){
 }
 
 export function UserDatastoreProvider({ children }){
-	const [userDatastore, setUserDatastore] = useState([{
-		email: 'manav.sg1@gmail.com',
-		name: 'Manav Gadhoke',
-		password: '123',
-		createdAt: new Date().toDateString(),
-	}]);
+	const [userDatastore, setUserDatastore] = useState([
+		{
+			"name": "Manav Singh Gadhoke",
+			"email": "manav.sg1@gmail.com",
+			"password": "123",
+			"createdAt": "Thu Sep 23 2021"
+		}
+	]);
 
 	const updateUserDatastore = (newUserDatastore) => {
 		setUserDatastore(newUserDatastore);
 	}
 
 	const pushUserDatastore = (user) => {
-		setUserDatastore([...userDatastore, user]);
+		setUserDatastore([user]);
+		// setUserDatastore([{
+		// 	email: 'manav.sg1@gmail.com',
+		// 	name: 'MANAV'
+		// }]);
 	}
 
 	return (

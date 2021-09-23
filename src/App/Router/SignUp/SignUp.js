@@ -50,7 +50,8 @@ function SignUp() {
 		pushToUserDatastore({
 			name: userName,
 			email: userEmail,
-			password: userPassword
+			password: userPassword,
+			createdAt: new Date().toDateString(),
 		});
 	}
 
