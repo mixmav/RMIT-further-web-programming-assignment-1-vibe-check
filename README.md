@@ -2,7 +2,8 @@ USING CUSTOM JS CONFIG
 CONTEXT
 HOOKS
 Non persistent data structure state
-IMMUTABILITY HELPER
+Lodash
+Avataar images
 
 # Getting Started with Create React App
 

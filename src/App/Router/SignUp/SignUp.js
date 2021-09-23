@@ -21,12 +21,13 @@ function SignUp() {
 
 	const validateForm = (event) => {
 		event.preventDefault();
-		if(false
-			// userPassword.length < 6 || // Is at least 6 characters long
-			// !userPassword.match(/[a-z]/) || // Contains at least 1 lowercase letter
-			// !userPassword.match(/[A-Z]/) || // Contains at least 1 uppercase letter
-			// !userPassword.match(/[0-9]/) || // Contains at least one number
-			// !userPassword.match(/[\W_]/) // Contains at least one special character including an underscore
+		if(
+			// false
+			userPassword.length < 6 || // Is at least 6 characters long
+			!userPassword.match(/[a-z]/) || // Contains at least 1 lowercase letter
+			!userPassword.match(/[A-Z]/) || // Contains at least 1 uppercase letter
+			!userPassword.match(/[0-9]/) || // Contains at least one number
+			!userPassword.match(/[\W_]/) // Contains at least one special character including an underscore
 		){
 			alert('Password needs to be at least 6 characters including uppercase, lowercase characters, and a number and a punctuation.');
 			return;

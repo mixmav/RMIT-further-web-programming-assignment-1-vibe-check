@@ -18,7 +18,7 @@ function Profile() {
 	const [userCreatedAt, setUserCreatedAt] = useState("");
 	const [userEmail, setUserEmail] = useState("");
 
-	const [editProfileDialogVisible, setEditProfileDialogVisible] = useState(true);
+	const [editProfileDialogVisible, setEditProfileDialogVisible] = useState(false);
 
 	useEffect(() => {
 		if((user !== undefined)){
