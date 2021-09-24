@@ -34,10 +34,15 @@ function IndividualPost(props){
 				<Avatar seed={userEmail} size="small"/>
 				<p>Written by {userName}</p>
 			</div>
-			<div className="content">
+			<div className="content custom-scrollbar">
 				<h1>{props.post.content}</h1>
+
+				{
+					(props.post.img !== "" && props.post.img !== undefined) &&
+					<img src={props.post.img} alt="Post" />
+				}
 			</div>
-			<div className="buttons mt-50">
+			<div className="buttons mt-20">
 				<button className="btn"><i className="fa fa-reply"></i>Reply</button>
 				{auth.email === props.post.user_id &&
 					<div>

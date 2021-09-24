@@ -1,9 +1,12 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import imagePreviewSVG from 'img/svg/image-preview.svg';
 
 function ChoosePictureDialog(props){
-	const [imgURL, setImgURL] = useState("");
-	const [imgError, setImgError] = useState(false);
+	const [imgURLInput, setImgURLInput] = useState("");
+
+	const [generatedImgURL, setGeneratedImgURL] = useState();
+	const [imgLoadError, setImgLoadError] = useState(true);
+
 	const containerRef = useRef();
 	
 	const handleClick = (event) => {
@@ -16,19 +19,17 @@ function ChoosePictureDialog(props){
 		}
 	}
 
-	const handleAddImage = (event) => {
+	const handleLoadImage = (event) => {
 		event.preventDefault();
+		setGeneratedImgURL(imgURLInput);
 	}
 
-	useEffect(() => {
-
-	});
-
-	const generateImgSrc = () => {
-		if (imgURL.trim() !== "" && !imgError) {
-			return imgURL;
+	const handleAddImageToPost = (event) => {
+		if (imgLoadError) {
+			alert("That is not a valid image");
 		} else {
-			return imagePreviewSVG;
+			props.setPostImgSrc(generatedImgURL);
+			props.toggleVisible(false);
 		}
 	}
 
@@ -40,13 +41,21 @@ function ChoosePictureDialog(props){
 					<button className="btn darkBlack small" onClick={handleClick}><i className="fa fa-window-close"></i>Close</button>
 				</div>
 
-				<form onSubmit={handleAddImage}>
-					<input onChange={e => setImgURL(e.target.value)} type="url" className="text-input full-width mt-20" placeholder="URL of image" required/>
-					<button type="submit" className="btn mt-20 full-width"><i className="fa fa-plus-square"></i>Add image to post</button>
+				<form onSubmit={handleLoadImage}>
+					<input onChange={e => setImgURLInput(e.target.value)} type="url" className="text-input full-width mt-20" placeholder="URL of image" required/>
+					<button type="submit" className="btn mt-20 full-width"><i className="fa fa-download"></i>Load image</button>
 				</form>
 				
 				<h1 className="mt-10">Preview</h1>
-				<img onLoad={() => setImgError(false)} onError={() => setImgError(true)} src={generateImgSrc()} alt="User image" />
+
+				<img className={`${(imgLoadError ? 'img-error':'')}`} onLoad={() => setImgLoadError(false)} onError={() => setImgLoadError(true)} src={generatedImgURL} alt="Post" />
+				
+				{
+					imgLoadError &&
+					<img src={imagePreviewSVG} alt="Preview" />
+				}
+
+				<button onClick={handleAddImageToPost} className="btn full-width mt-20"><i className="fa fa-plus-square"></i>Add image to post</button>
 			</div>
 		</div>
 	);

@@ -5,6 +5,7 @@ $primary-alt-color: white;
 
 $black: rgba(black, 0.8);
 $red: #CC0041;
+$lightRed: #EC5B70;
 $orange: #FC8C24;
 $yellow: #FDE747;
 $green: #61E294;
@@ -28,6 +29,7 @@ $colors: (
 	'burgandy': $burgandy,
 	'darkBlack': $darkBlack,
 	'primary': $primary-color,
+	'lightRed': $lightRed,
 );
 
 @mixin media($width){

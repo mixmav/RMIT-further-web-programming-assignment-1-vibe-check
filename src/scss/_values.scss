@@ -64,7 +64,10 @@ i, span{
 	background: transparent;
 	display: inline-block;
 	transition: all .2s;
-	padding: .8em{
+	padding: {
+		top: .5em;
+		bottom: .5em;
+		right: .8em;
 		left: .5em;
 	}
 	&:focus{

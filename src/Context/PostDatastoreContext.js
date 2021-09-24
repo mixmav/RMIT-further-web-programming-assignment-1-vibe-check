@@ -35,6 +35,7 @@ export function PostDatastoreProvider({ children }){
 			"post_id": "manav.sg1@gmail.com1",
 			"user_id": "manav.sg1@gmail.com",
 			"content": "123",
+			"img": "https://spy.com/wp-content/uploads/2020/12/CleanClipping-Recovered-10.png?w=958&h=599&crop=1",
 			"createdAt": "Thu Sep 23 2021"
 		},
 		{
@@ -58,7 +59,7 @@ export function PostDatastoreProvider({ children }){
 	const pushPostDatastore = (post) => {
 		setPostDatastore(
 			() => {
-				return [...postDatastore, post];
+				return [post, ...postDatastore];
 			}
 		);
 	}
