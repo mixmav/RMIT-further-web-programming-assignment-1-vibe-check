@@ -14,8 +14,13 @@
 		.dialog{
 			max-width: 300px;
 			max-height: 500px;
+			.top-bar{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
 			h1{
-				font-size: 1.3em;
+				font-size: 1em;
 			}
 		}
 	}

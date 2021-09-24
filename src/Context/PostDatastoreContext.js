@@ -34,18 +34,19 @@ export function PostDatastoreProvider({ children }){
 			"img": "https://spy.com/wp-content/uploads/2020/12/CleanClipping-Recovered-10.png?w=958&h=599&crop=1",
 			"createdAt": "Thu Sep 23 2021"
 		},
-		// {
-		// 	"post_id": "manav.sg1@gmail.com2",
-		// 	"user_id": "manav.sg1@gmail.com",
-		// 	"content": "123",
-		// 	"createdAt": "Thu Sep 23 2021"
-		// },
-		// {
-		// 	"post_id": "manav.sg1@gmail.comm1",
-		// 	"user_id": "manav.sg1@gmail.comm",
-		// 	"content": "New post 2",
-		// 	"createdAt": "Thu Sep 23 2021"
-		// }
+		{
+			"post_id": "manav.sg1@gmail.com2",
+			"user_id": "manav.sg1@gmail.com",
+			"content": "123",
+			"replyOf": "manav.sg1@gmail.com1",
+			"createdAt": "Thu Sep 23 2021"
+		},
+		{
+			"post_id": "manav.sg1@gmail.comm1",
+			"user_id": "manav.sg1@gmail.comm",
+			"content": "New post 2",
+			"createdAt": "Thu Sep 23 2021"
+		}
 	]);
 
 
@@ -73,12 +74,16 @@ export function PostDatastoreProvider({ children }){
 		}
 	}, [postIdToPull, postDatastore]);
 
-	const pushPostDatastore = (post) => {
-		setPostDatastore(
-			() => {
-				return [post, ...postDatastore];
-			}
-		);
+	const pushPostDatastore = (post, index = false) => {
+		if (!index) {
+			setPostDatastore(
+				() => {
+					return [...postDatastore, post];
+				}
+			);
+		} else {
+
+		}
 	}
 
 	const pullPostDatastore = (id, allFromUser = false) => {

@@ -45,9 +45,8 @@ function ChoosePictureDialog(props){
 					<input onChange={e => setImgURLInput(e.target.value)} type="url" className="text-input full-width mt-20" placeholder="URL of image" required/>
 					<button type="submit" className="btn mt-20 full-width"><i className="fa fa-download"></i>Load image</button>
 				</form>
-				
-				{/* <h1 className="mt-10">Preview</h1> */}
 
+				{/* Conditionally add the .img-error class which sets the display to 'none' in case on an error. */}
 				<img className={`${(imgLoadError ? 'img-error':'')}`} onLoad={() => setImgLoadError(false)} onError={() => setImgLoadError(true)} src={generatedImgURL} alt="Post" />
 				
 				{

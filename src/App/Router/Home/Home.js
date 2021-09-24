@@ -15,7 +15,7 @@ function Home() {
 				
 				<img className="mt-30" src={laptopSVG} alt="Laptop" />
 				<h1 className="mt-30">What can you do on Vibe Check?</h1>
-				<p className="mt-10">You can create your profile, make posts, reply to other posts, and edit your profile. <Link to="/profile">Get started</Link>.</p>
+				<p className="mt-10">You can create your profile, make and edit posts, reply to other posts, and edit your profile. <Link to="/profile">Get started</Link>.</p>
 				<br />
 			</section>
 		</div>

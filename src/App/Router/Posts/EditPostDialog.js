@@ -32,8 +32,9 @@ function EditPostDialog(props){
 			"img": postImageSrc,
 			"createdAt": props.post.createdAt,
 		}
-
 		updatePostInDatastore(post);
+		
+		//Reset field values.
 		setPostText("");
 		setPostImgSrc("");
 		props.toggleVisible(false);
@@ -47,19 +48,21 @@ function EditPostDialog(props){
 				<ChoosePictureDialog visible={choosePictureDialogVisible} setPostImgSrc={(state) => setPostImgSrc(state)} toggleVisible={(state) => setChoosePictureDialogVisible(state)} />
 			}
 			<div className="dialog">
-				<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+				<div className="top-bar">
 					<h1>Edit your post</h1>
 					<button className="btn lightRed small" onClick={handleClickClose}><i className="fa fa-window-close"></i>Cancel</button>
 				</div>
+
 				<div className="form mt-20">
 					<textarea value={postText} onChange={e => setPostText(e.target.value)} placeholder="Share your thoughts..."></textarea>
 					<div className="picture mt-10">
 						<button className="btn small darkBlack" onClick={() => setChoosePictureDialogVisible(true)}><i className="fa fa-camera"></i>Choose a picture</button>
+
+						{/* Use Lodash to truncate the URL to 20 characters */}
 						<p>{_.truncate(postImageSrc, {length: 20})}</p>
 					</div>
 					<button onClick={updatePostHandle} className="btn full-width mt-20"><i className="fa fa-sync"></i>Update</button>
 				</div>
-
 			</div>
 		</div>
 	);

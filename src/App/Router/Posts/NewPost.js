@@ -35,6 +35,8 @@ function NewPost(props){
 		}
 
 		pushToPostDatastore(post);
+
+		//Reset field values.
 		setPostText("");
 		setPostImgSrc("");
 		textareaRef.current.value = "";
@@ -58,6 +60,8 @@ function NewPost(props){
 				<textarea ref={textareaRef} onChange={e => setPostText(e.target.value)} placeholder="Share your thoughts..."></textarea>
 				<div className="picture mt-10">
 					<button className="btn small darkBlack" onClick={() => setChoosePictureDialogVisible(true)}><i className="fa fa-camera"></i>Choose a picture</button>
+					
+					{/* Use Lodash to trunate the URL to 40 characters */}
 					<p>{_.truncate(postImageSrc, {length: 40})}</p>
 				</div>
 				<button onClick={createPostHandle} className="btn full-width mt-20"><i className="fa fa-paper-plane"></i>Post</button>

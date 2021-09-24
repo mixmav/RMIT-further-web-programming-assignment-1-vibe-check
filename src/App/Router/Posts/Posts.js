@@ -53,11 +53,18 @@ function Posts(){
 						postDatastore.map((post, key) => 
 							<IndividualPost key={key} post={post} />
 						)
+
+						//TODO show with replies
 					}
+
 					{showOwnPostsOnly &&
 						userOwnPostDatastore.map((post, key) => 
 							<IndividualPost key={key} post={post} />
 						)
+					}
+					{
+						(postDatastore.length == 0) &&
+						<p className="mt-30 text primary">No posts yet. Be the first to share!</p>
 					}
 				</section>
 			</section>

@@ -1,5 +1,10 @@
 import './Avatar.scss';
 
+/*
+	A default avatar component that can be reused throughout the app. Uses a hash based on the seed prop supplied to generate the image.
+	API used: https://avatars.dicebear.com. Free for commercial and personal use.
+*/
+
 function Avatar(props){
 	return (
 		<div className={`app-common-component--avatar-container ${(props.size === "small") ? 'small ': ''}`}>
