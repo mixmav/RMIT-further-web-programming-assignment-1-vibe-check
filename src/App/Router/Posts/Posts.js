@@ -63,7 +63,7 @@ function Posts(){
 						)
 					}
 					{
-						(postDatastore.length == 0) &&
+						(postDatastore.length === 0) &&
 						<p className="mt-30 text primary">No posts yet. Be the first to share!</p>
 					}
 				</section>

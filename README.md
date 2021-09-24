@@ -3,12 +3,17 @@ Written with ♥ for A1 of Further Web Programming by Manav Gadhoke (S3783375).
 
 
 ## Features and technical details
-USING CUSTOM JS CONFIG
-CONTEXT
-HOOKS
-Non persistent data structure state
-Lodash
-Avataar images
+- The entire app uses modular functional components
+- All data is stored using data structures making use of the React Context API
+- No local storage has been used
+- A custom jsconfig.js file is help with import paths
+- Extensive use of hooks
+- Lodash has been used to help with data manipulation
+
+## Image sources
+- [Avatars](https://avatars.dicebear.com/)
+- [SVGs](https://undraw.co/)
+Both are free for commercial and personal use.
 
 
 ## Available Scripts
