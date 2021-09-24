@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2c445e1c.chunk.css",
+    "main.js": "/static/js/main.01fa98bc.chunk.js",
+    "main.js.map": "/static/js/main.01fa98bc.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.d649d203.js",
+    "runtime-main.js.map": "/static/js/runtime-main.d649d203.js.map",
+    "static/js/2.9dd0485c.chunk.js": "/static/js/2.9dd0485c.chunk.js",
+    "static/js/2.9dd0485c.chunk.js.map": "/static/js/2.9dd0485c.chunk.js.map",
+    "static/js/3.b1a17def.chunk.js": "/static/js/3.b1a17def.chunk.js",
+    "static/js/3.b1a17def.chunk.js.map": "/static/js/3.b1a17def.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.2c445e1c.chunk.css.map": "/static/css/main.2c445e1c.chunk.css.map",
+    "static/js/2.9dd0485c.chunk.js.LICENSE.txt": "/static/js/2.9dd0485c.chunk.js.LICENSE.txt",
+    "static/media/image-preview.127d3220.svg": "/static/media/image-preview.127d3220.svg",
+    "static/media/laptop.c622269c.svg": "/static/media/laptop.c622269c.svg",
+    "static/media/reading-book.02432d95.svg": "/static/media/reading-book.02432d95.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d649d203.js",
+    "static/js/2.9dd0485c.chunk.js",
+    "static/css/main.2c445e1c.chunk.css",
+    "static/js/main.01fa98bc.chunk.js"
+  ]
+}
