@@ -1,18 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import _ from 'lodash';
 
 const PostDatastoreContext = React.createContext();
-const PostDatastoreUpdateContext = React.createContext();
 const PostDatastorePushContext = React.createContext();
 const PostDatastorePullContext = React.createContext();
 const PostDatastoreUpdatePostContext = React.createContext();
 
 export function usePostDatastore(){
 	return useContext(PostDatastoreContext);
-}
-
-export function usePostDatastoreUpdate(){
-	return useContext(PostDatastoreUpdateContext);
 }
 
 export function usePostDatastorePush(){
@@ -28,7 +23,8 @@ export function usePostDatastoreUpdatePost(){
 }
 
 export function PostDatastoreProvider({ children }){
-	// const isFirstRender = useRef(true);
+	const [postIdToPull, setPostIdToPull] = useState(null);
+	const isFirstRender = useRef(true);
 
 	const [postDatastore, setPostDatastore] = useState([
 		{
@@ -38,23 +34,44 @@ export function PostDatastoreProvider({ children }){
 			"img": "https://spy.com/wp-content/uploads/2020/12/CleanClipping-Recovered-10.png?w=958&h=599&crop=1",
 			"createdAt": "Thu Sep 23 2021"
 		},
-		{
-			"post_id": "manav.sg1@gmail.com2",
-			"user_id": "manav.sg1@gmail.com",
-			"content": "123",
-			"createdAt": "Thu Sep 23 2021"
-		},
-		{
-			"post_id": "manav.sg1@gmail.comm1",
-			"user_id": "manav.sg1@gmail.comm",
-			"content": "New post 2",
-			"createdAt": "Thu Sep 23 2021"
-		}
+		// {
+		// 	"post_id": "manav.sg1@gmail.com2",
+		// 	"user_id": "manav.sg1@gmail.com",
+		// 	"content": "123",
+		// 	"createdAt": "Thu Sep 23 2021"
+		// },
+		// {
+		// 	"post_id": "manav.sg1@gmail.comm1",
+		// 	"user_id": "manav.sg1@gmail.comm",
+		// 	"content": "New post 2",
+		// 	"createdAt": "Thu Sep 23 2021"
+		// }
 	]);
 
-	const updatePostDatastore = (newPostDatastore) => {
-		setPostDatastore(newPostDatastore);
-	}
+
+	/*
+		this method controls when the "old" post is pulled from the post datastore.
+		It does so by using the isFirstRender flag.
+		It's done this way to make sure the state is up-to-date before performing the operation.
+	*/
+	useEffect(() => {
+		if (isFirstRender.current) {
+			isFirstRender.current = false;
+			return;
+		}
+
+		if (postIdToPull !== null) {
+			let result = _.without(postDatastore, _.find(postDatastore, {
+				post_id: postIdToPull,
+			}));
+
+			setPostDatastore((state) => {
+				return result;
+			});
+
+			setPostIdToPull(null);
+		}
+	}, [postIdToPull, postDatastore]);
 
 	const pushPostDatastore = (post) => {
 		setPostDatastore(
@@ -88,7 +105,7 @@ export function PostDatastoreProvider({ children }){
 	const updatePostInDatastore = (post) => {
 		setPostDatastore(
 			() => {
-				// setEmailToPull(user.email);
+				setPostIdToPull(post.post_id);
 				return [...postDatastore, post];
 			}
 		);
@@ -96,15 +113,13 @@ export function PostDatastoreProvider({ children }){
 
 	return (
 		<PostDatastoreContext.Provider value={postDatastore}>
-			<PostDatastoreUpdateContext.Provider value={updatePostDatastore}>
-				<PostDatastorePushContext.Provider value={pushPostDatastore}>
-					<PostDatastorePullContext.Provider value={pullPostDatastore}>
-						<PostDatastoreUpdatePostContext.Provider value={updatePostInDatastore}>
-							{children}
-						</PostDatastoreUpdatePostContext.Provider>
-					</PostDatastorePullContext.Provider>
-				</PostDatastorePushContext.Provider>
-			</PostDatastoreUpdateContext.Provider>
+			<PostDatastorePushContext.Provider value={pushPostDatastore}>
+				<PostDatastorePullContext.Provider value={pullPostDatastore}>
+					<PostDatastoreUpdatePostContext.Provider value={updatePostInDatastore}>
+						{children}
+					</PostDatastoreUpdatePostContext.Provider>
+				</PostDatastorePullContext.Provider>
+			</PostDatastorePushContext.Provider>
 		</PostDatastoreContext.Provider>
 	);
 }

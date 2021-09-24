@@ -11,7 +11,7 @@ function App() {
 			<Router>
 				<TopBar />
 				
-				<section className="router-container">
+				<section className="router-container custom-scrollbar">
 					<RouterSwitch />
 				</section>
 

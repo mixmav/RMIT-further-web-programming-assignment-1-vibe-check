@@ -34,11 +34,11 @@ function ChoosePictureDialog(props){
 	}
 
 	return (
-		<div className="router-page-posts--component-choose-picture-dialog" onClick={checkClickClose} ref={containerRef}>
+		<div className="router-page-posts--component-choose-picture-dialog dialog-container" onClick={checkClickClose} ref={containerRef}>
 			<div className="dialog custom-scrollbar">
 				<div className="top-bar">
 					<h1>Choose a picture</h1>
-					<button className="btn darkBlack small" onClick={handleClick}><i className="fa fa-window-close"></i>Close</button>
+					<button className="btn lightRed small" onClick={handleClick}><i className="fa fa-window-close"></i>Close</button>
 				</div>
 
 				<form onSubmit={handleLoadImage}>
@@ -46,7 +46,7 @@ function ChoosePictureDialog(props){
 					<button type="submit" className="btn mt-20 full-width"><i className="fa fa-download"></i>Load image</button>
 				</form>
 				
-				<h1 className="mt-10">Preview</h1>
+				{/* <h1 className="mt-10">Preview</h1> */}
 
 				<img className={`${(imgLoadError ? 'img-error':'')}`} onLoad={() => setImgLoadError(false)} onError={() => setImgLoadError(true)} src={generatedImgURL} alt="Post" />
 				

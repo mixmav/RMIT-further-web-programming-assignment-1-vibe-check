@@ -44,18 +44,19 @@ function Posts(){
 				}
 
 				<NewPost userName={userName} />
+
 				<h1 className="mt-30"><i className="fa fa-clipboard-list"></i>All posts</h1>
 				<label className="mt-10" style={{ 'display': 'inline-block' }}>Only show posts made by me <input onChange={(e) => updateShowOwnPostsOnly(e.target.checked)} checked={showOwnPostsOnly} type="checkbox" /></label>
 				
 				<section>
 					{!showOwnPostsOnly &&
-						postDatastore.map((post) => 
-							<IndividualPost key={post.post_id} post={post} />
+						postDatastore.map((post, key) => 
+							<IndividualPost key={key} post={post} />
 						)
 					}
 					{showOwnPostsOnly &&
-						userOwnPostDatastore.map((post) => 
-							<IndividualPost key={post.post_id} post={post} />
+						userOwnPostDatastore.map((post, key) => 
+							<IndividualPost key={key} post={post} />
 						)
 					}
 				</section>

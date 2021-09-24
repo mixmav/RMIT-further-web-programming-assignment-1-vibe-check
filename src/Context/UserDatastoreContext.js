@@ -2,17 +2,12 @@ import React, { useContext, useState, useEffect, useRef } from "react";
 import _ from 'lodash';
 
 const UserDatastoreContext = React.createContext();
-const UserDatastoreUpdateContext = React.createContext();
 const UserDatastorePushContext = React.createContext();
 const UserDatastorePullContext = React.createContext();
 const UserDatastoreUpdateUserContext = React.createContext();
 
 export function useUserDatastore(){
 	return useContext(UserDatastoreContext);
-}
-
-export function useUserDatastoreUpdate(){
-	return useContext(UserDatastoreUpdateContext);
 }
 
 export function useUserDatastorePush(){
@@ -29,8 +24,8 @@ export function useUserDatastoreUpdateUser(){
 
 export function UserDatastoreProvider({ children }){
 	const [emailToPull, setEmailToPull] = useState(null);
-	
 	const isFirstRender = useRef(true);
+
 	const [userDatastore, setUserDatastore] = useState([
 		{
 			"name": "Manav Singh Gadhoke",
@@ -71,10 +66,6 @@ export function UserDatastoreProvider({ children }){
 		}
 	}, [emailToPull, userDatastore]);
 
-	const updateUserDatastore = (newUserDatastore) => {
-		setUserDatastore(newUserDatastore);
-	}
-
 	const pushUserDatastore = (user) => {
 		setUserDatastore(
 			() => {
@@ -98,15 +89,13 @@ export function UserDatastoreProvider({ children }){
 
 	return (
 		<UserDatastoreContext.Provider value={userDatastore}>
-			<UserDatastoreUpdateContext.Provider value={updateUserDatastore}>
-				<UserDatastorePushContext.Provider value={pushUserDatastore}>
-					<UserDatastorePullContext.Provider value={pullUserDatastore}>
-						<UserDatastoreUpdateUserContext.Provider value={updateUserInDatastore}>
-							{children}
-						</UserDatastoreUpdateUserContext.Provider>
-					</UserDatastorePullContext.Provider>
-				</UserDatastorePushContext.Provider>
-			</UserDatastoreUpdateContext.Provider>
+			<UserDatastorePushContext.Provider value={pushUserDatastore}>
+				<UserDatastorePullContext.Provider value={pullUserDatastore}>
+					<UserDatastoreUpdateUserContext.Provider value={updateUserInDatastore}>
+						{children}
+					</UserDatastoreUpdateUserContext.Provider>
+				</UserDatastorePullContext.Provider>
+			</UserDatastorePushContext.Provider>
 		</UserDatastoreContext.Provider>
 	);
 }
