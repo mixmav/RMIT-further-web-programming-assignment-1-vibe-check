@@ -5,6 +5,7 @@ Written with ♥ for A1 of Further Web Programming by Manav Gadhoke (S3783375).
 ## Features and technical details
 - The entire app uses modular functional components
 - All data is stored using data structures making use of the React Context API
+- All the CSS is written using the excellent [Sass](https://sass-lang.com/) preprocessor.
 - No local storage has been used
 - A custom jsconfig.js file is help with import paths
 - Extensive use of hooks
