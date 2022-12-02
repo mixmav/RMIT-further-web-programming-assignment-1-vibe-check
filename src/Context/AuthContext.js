@@ -13,8 +13,8 @@ export function useAuthUpdate(){
 
 export function AuthProvider({ children }){
 	const [auth, setAuth] = useState({
-		auth: true,
-		email: 'manav.sg1@gmail.com',
+		auth: false,
+		email: '',
 	});
 
 	function updateAuth(newUser){

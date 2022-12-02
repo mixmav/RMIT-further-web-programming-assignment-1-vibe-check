@@ -27,18 +27,18 @@ export function UserDatastoreProvider({ children }){
 	const isFirstRender = useRef(true);
 
 	const [userDatastore, setUserDatastore] = useState([
-		{
-			"name": "Manav Singh Gadhoke",
-			"email": "manav.sg1@gmail.com",
-			"password": "123",
-			"createdAt": "Thu Sep 23 2021"
-		},
-		{
-			"name": "Manav too",
-			"email": "manav.sg1@gmail.comm",
-			"password": "123",
-			"createdAt": "Thu Sep 23 2021"
-		}
+		// {
+		// 	"name": "Manav",
+		// 	"email": "manav.sg1@gmail.com",
+		// 	"password": "123",
+		// 	"createdAt": "Thu Sep 23 2021"
+		// },
+		// {
+		// 	"name": "Also Manav",
+		// 	"email": "manav.sg1@gmail.comm",
+		// 	"password": "123",
+		// 	"createdAt": "Thu Sep 23 2021"
+		// }
 	]);
 
 
